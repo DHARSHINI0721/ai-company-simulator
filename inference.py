@@ -101,7 +101,7 @@ avg = sum(r["reward"] for r in results) / len(results)
 by_type = {}
 for r in results:
     by_type.setdefault(r["task_type"], []).append(r["reward"])
-
+print(f"   Model : {MODEL_NAME}")
 print("=" * 60)
 print("   BASELINE RESULTS")
 print("=" * 60)
