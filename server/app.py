@@ -2,6 +2,8 @@ import os
 import json
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from environment import CompanyEnv
 from models import Action
 from tasks import get_all_tasks
