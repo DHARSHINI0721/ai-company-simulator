@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "ai-company-simulator"
+version = "1.0.0"
+description = "Autonomous Enterprise Agent Benchmark - OpenEnv compliant"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic",
+    "openenv-core>=0.2.0",
+]
+
+[project.scripts]
+server = "app:main"
+
+[tool.openenv]
+name = "ai-company-simulator"
+version = "1.0"
+tasks = ["email", "security", "fix"]
