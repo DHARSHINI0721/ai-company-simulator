@@ -1,4 +1,13 @@
 import os
+
+# Required by OpenEnv checklist
+API_BASE_URL = os.environ.get("API_BASE_URL", "https://router.huggingface.co/v1")
+MODEL_NAME = os.environ.get("MODEL_NAME", "mistralai/Mistral-7B-Instruct-v0.3")
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
+
+
+
+import os
 import sys
 
 HF_TOKEN = os.environ.get("HF_TOKEN", "")
@@ -12,7 +21,7 @@ from tasks import get_all_tasks
 def run_with_api(prompt):
     try:
         import urllib.request, json
-        url = "https://router.huggingface.co/v1/chat/completions"
+        url =  f"{API_BASE_URL}/chat/completions"
         data = json.dumps({
             "model": "mistralai/Mistral-7B-Instruct-v0.3",
             "messages": [{"role": "user", "content": prompt}],
@@ -41,7 +50,7 @@ def fallback_response(task_type, situation):
     return "Decision: Escalate for manual review per company policy."
 
 all_tasks = get_all_tasks()
-
+print(f"   Model : {MODEL_NAME}")
 print("=" * 60)
 print("   AI Company Simulator — Enterprise Agent Benchmark")
 print("=" * 60)
