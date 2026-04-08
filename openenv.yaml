@@ -1,0 +1,61 @@
+name: ai-company-simulator
+version: "1.0"
+description: >
+  Benchmark environment for evaluating AI agents as autonomous enterprise
+  compliance officers. Covers email triage, security risk detection, and
+  policy generation across increasing difficulty levels.
+
+tags:
+  - openenv
+  - ai-agent
+  - enterprise
+  - benchmark
+
+observation_space:
+  type: object
+  fields:
+    input_text: string
+    task_type: string
+    step_number: integer
+    context: object
+
+action_space:
+  type: object
+  fields:
+    output: string
+
+reward:
+  type: float
+  range: [0.0, 1.0]
+  incremental: true
+
+tasks:
+  - id: email_001
+    type: email
+    difficulty: easy
+    description: Approve, reject, or escalate employee access requests
+
+  - id: email_002
+    type: email
+    difficulty: easy
+    description: Handle HR policy bypass attempts
+
+  - id: security_001
+    type: security
+    difficulty: medium
+    description: Classify risk level of credential exposure
+
+  - id: security_002
+    type: security
+    difficulty: medium
+    description: Detect and respond to API abuse patterns
+
+  - id: fix_001
+    type: fix
+    difficulty: hard
+    description: Generate secure fix for exposed database
+
+  - id: fix_002
+    type: fix
+    difficulty: hard
+    description: Remediate leaked API keys in public repository
